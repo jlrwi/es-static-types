@@ -1,0 +1,28 @@
+{
+    "name": "es-static-types",
+    "version": "1.0.0",
+    "description": "Static Land types for ECMAScript types",
+    "main": "index.js",
+    "directories": {
+        "source": "src",
+        "test": "test"
+    },
+    "devDependencies": {
+        "@jlrwi/jscheck": "*",
+        "@jlrwi/package-processor": "*"
+    },
+    "dependencies": {
+        "@jlrwi/esfunctions": "*",
+        "@jlrwi/adt_tests": "*",
+        "@jlrwi/combinators": "*"
+    },
+    "scripts": {
+        "pretest": "batch-process --pretest ./modules.json",
+        "test": "node --experimental-modules ./test/test_modules.js",
+        "posttest": "type test.log",
+        "stage": "batch-process --min ./modules.json"
+    },
+    "author": "Jonathan Reimer",
+    "license": "ISC",
+    "type": "module"
+}
