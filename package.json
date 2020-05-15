@@ -1,5 +1,5 @@
 {
-    "name": "es-static-types",
+    "name": "@jlrwi/es-static-types",
     "version": "1.0.0",
     "description": "Static Land types for ECMAScript types",
     "main": "index.js",

@@ -29,8 +29,8 @@ import {
 } from "@jlrwi/esfunctions";
 //test import esNumber_Addition from "../src/esNumber_Addition.js";
 //test import esBoolean from "../src/esBoolean_Or.js";
-//test import pair_type from "../../StaticTypesBasic/Pair_Type.js";
-//test import maybe_type from "../../StaticTypesBasic/Maybe_Type.js";
+//test import pair_type from "../../StaticTypesBasic/Pair_Type.min.js";
+//test import maybe_type from "../../StaticTypesBasic/Maybe_Type.min.js";
 //test import adtTests from "@jlrwi/adt_tests";
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
