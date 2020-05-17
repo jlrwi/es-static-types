@@ -15,6 +15,18 @@ import array_type from "./esArray.min.js";
 import object_dictionary_type from "./esObject_Dictionary.min.js";
 import object_record_type from "./esObject_Record.min.js";
 
+const slm = {
+    bool: boolean_type(),
+    bool_and: boolean_and_type(),
+    bool_or: boolean_or_type(),
+    func: function_type(),
+    num: number_type(),
+    num_sum: number_addition_type(),
+    num_prod: number_multiplication_type(),
+    str: string_type(),
+    undefined: undefined_type()
+};
+
 export {
     boolean_type,
     boolean_and_type,
@@ -28,15 +40,5 @@ export {
     array_type,
     object_dictionary_type,
     object_record_type,
-    slm: {
-        bool: boolean_type(),
-        bool_and: boolean_and_type(),
-        bool_or: boolean_or_type(),
-        func: function_type(),
-        num: number_type(),
-        num_sum: number_addition_type(),
-        num_prod: number_multiplication_type(),
-        str: string_type(),
-        undefined: undefined_type()
-    }
+    slm
 };

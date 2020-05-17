@@ -2,7 +2,10 @@
     fudge
 */
 
+//erase /*
 import esNumber from "../src/esNumber.js";
+//erase */
+//stage import esNumber from "./esNumber.min.js";
 import {
     constant
 } from "@jlrwi/combinators";

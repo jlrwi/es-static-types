@@ -2,7 +2,11 @@
     fudge
 */
 
+//erase /*
 import esBoolean from "../src/esBoolean.js";
+//erase */
+//stage import esBoolean from "./esBoolean.min.js";
+
 import {
     constant
 } from "@jlrwi/combinators";
