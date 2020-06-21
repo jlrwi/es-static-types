@@ -12,7 +12,7 @@ import {
 import {
 //test     log,
 //test     string_concat,
-//test     prop,
+    prop,
 //test     array_map,
     is_object,
     object_has_property
@@ -222,6 +222,25 @@ const zero = empty;
 
 // Sanctuary has chainRec
 
+const get = function (idx) {
+    return prop (idx);
+};
+
+const set = function (idx) {
+    return function (val) {
+        return function (a) {
+            return Object.freeze(
+                [...a.slice(0, idx), val, ...a.slice(idx + 1)]
+            );
+        };
+    };
+};
+
+const indexer = Object.freeze({
+    get,
+    set
+});
+
 const validate = function (content_type) {
     return function (ary) {
         return (
@@ -255,6 +274,7 @@ const type_factory = function (type_of) {
         append,
         traverse,
         reduce,
+        indexer,
         validate: Array.isArray,
         create,
         zero
@@ -289,7 +309,7 @@ const type_factory = function (type_of) {
 
 //test const test_fxs = array_map (jsc.literal) ([
 //test     string_concat ("_"),
-//test     flip (concat) ("!"),
+//test     flip (string_concat) ("!"),
 //test     function (str) {
 //test         return str.slice(0, 2);
 //test     },

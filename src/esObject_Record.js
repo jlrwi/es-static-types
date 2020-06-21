@@ -12,6 +12,7 @@ import {
 //test     log,
     object_has_property,
     is_object,
+    prop,
     empty_object
 } from "@jlrwi/esfunctions";
 //test import esString from "../src/esString.js";
@@ -114,11 +115,26 @@ const map_prop = function (target_prop) {
 };
 */
 
+const get = prop;
+const set = function (key) {
+    return function (val) {
+        return function (o) {
+            return Object.freeze({...o, [key]: val});
+        };
+    };
+};
+
+const indexer = Object.freeze({
+    get,
+    set
+});
+
 const type_factory = function (type_of) {
     const base_type = {
         spec: "StaticLand",
         version: 1,
-        type_name: "esObject_Record"
+        type_name: "esObject_Record",
+        indexer
     };
 
     if (is_object (type_of)) {

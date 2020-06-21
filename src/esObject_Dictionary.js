@@ -14,7 +14,7 @@ import {
 //test     and,
 //test     not,
 //test     equals,
-//test     prop,
+    prop,
 //test     lt,
 //test     array_map,
 //test     add,
@@ -41,8 +41,8 @@ const create = object_create_pair;
 
 // Semigroup :: {a} -> {a} -> {a}
 // With overwriting duplicate keys
-const concat = function (objB) {
-    return function (objA) {
+const concat = function (objA) {
+    return function (objB) {
         return Object.freeze(
             Object.assign (empty_object (), objA, objB)
         );
@@ -275,6 +275,20 @@ const bimap = function (f) {
 //    return xs[Object.keys(xs).sort()[0]];
 //};
 
+const get = prop;
+const set = function (key) {
+    return function (val) {
+        return function (o) {
+            return Object.freeze({...o, [key]: val});
+        };
+    };
+};
+
+const indexer = Object.freeze({
+    get,
+    set
+});
+
 const validate = function (content_type) {
     return function (obj) {
         return (
@@ -301,6 +315,7 @@ const type_factory = function (type_of) {
         concat,
         empty,
         append,
+        indexer,
         create,
         validate: is_object
     };
