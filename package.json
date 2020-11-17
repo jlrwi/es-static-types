@@ -9,16 +9,16 @@
     },
     "devDependencies": {
         "@jlrwi/jscheck": "*",
-        "@jlrwi/package-processor": "*"
+        "@jlrwi/package-processor": "*",
+        "@jlrwi/adt_tests": "*"
     },
     "dependencies": {
         "@jlrwi/esfunctions": "*",
-        "@jlrwi/adt_tests": "*",
         "@jlrwi/combinators": "*"
     },
     "scripts": {
         "pretest": "batch-process --pretest ./modules.json",
-        "test": "node --experimental-modules ./test/test_modules.js",
+        "test": "node ./test/test_modules.js",
         "posttest": "type test.log",
         "stage": "batch-process --min ./modules.json"
     },
