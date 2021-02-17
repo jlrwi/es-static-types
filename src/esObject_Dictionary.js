@@ -186,8 +186,6 @@ const object_equals = function (content_type) {
     };
 };
 
-/*
-*/
 // Ord :: a -> a -> Boolean
 // true at either (for sorted list of keys):
 // -first index where xs[key] < ys[key]

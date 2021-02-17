@@ -5,13 +5,12 @@
 // Static Land implementation of Undefined
 
 import {
-//test    identity,
+//test     identity,
     constant,
     compose
 } from "@jlrwi/combinators";
 import {
-//test    array_map,
-//test    log,
+//test     array_map,
     equals
 } from "@jlrwi/esfunctions";
 //test import adtTests from "@jlrwi/adt_tests";
@@ -59,9 +58,15 @@ const type_factory = function () {
 //test     constant (undefined),
 //test     identity
 //test ]);
+//test const custom_predicate = function (verdict) {
+//test     return function ({left, right, compare_with}) {
+//test         return verdict(compare_with (left) (right));
+//test     };
+//test };
 //test const test_roster = adtTests ({
 //test     functor: {
 //test         T: testT,
+//test         predicate: custom_predicate,
 //test         signature: [{
 //test             a: jsc.literal(undefined),
 //test             f: jsc.wun_of(test_fxs),
@@ -70,6 +75,7 @@ const type_factory = function () {
 //test     },
 //test     semigroup: {
 //test         T: testT,
+//test         predicate: custom_predicate,
 //test         signature: [{
 //test             a: jsc.falsy(),
 //test             b: jsc.falsy(),
@@ -78,12 +84,14 @@ const type_factory = function () {
 //test     },
 //test     monoid: {
 //test         T: testT,
+//test         predicate: custom_predicate,
 //test         signature: [{
 //test             a: jsc.literal(undefined)
 //test         }]
 //test     },
 //test     setoid: {
 //test         T: testT,
+//test         predicate: custom_predicate,
 //test         signature: [{
 //test             a: jsc.falsy(),
 //test             b: jsc.falsy(),

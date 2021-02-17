@@ -2,8 +2,11 @@
     fudge
 */
 
+// Not passing tests yet - still needs work
+
 import {
     identity,
+    second,
     compose
 } from "@jlrwi/combinators";
 import {
@@ -24,10 +27,10 @@ import {
 const type_name = "esPrimitive";
 
 // Functor :: (a -> b) -> a -> b
-const map = identity;
+const map = second;
 
 // Functor :: (a -> b) -> a -> b
-const ap = identity;
+const ap = second;
 
 // Applicative :: x -> x
 const of = identity;
