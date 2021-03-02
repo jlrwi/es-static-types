@@ -6,6 +6,8 @@
 
 import {
     identity,
+    apply,
+    apply_with,
     second,
     compose
 } from "@jlrwi/combinators";
@@ -27,10 +29,10 @@ import {
 const type_name = "esPrimitive";
 
 // Functor :: (a -> b) -> a -> b
-const map = second;
+const map = apply;
 
 // Functor :: (a -> b) -> a -> b
-const ap = second;
+const ap = apply;
 
 // Applicative :: x -> x
 const of = identity;
@@ -54,7 +56,26 @@ const type_factory = function (ignore) {
     });
 };
 
+// NEEDS A COMPARE_WITH f
+
 //test const testT = type_factory ();
+//test const predicate = function (verdict) {
+//test     return function ({left, right}) {
+//test         if (left === undefined) {
+//test             return verdict(right === undefined);
+//test         }
+//test
+//test         if (left === null) {
+//test             return verdict(right === null);
+//test         }
+//test
+//test         if (Number.isNaN(left)) {
+//test             return verdict(Number.isNaN(right));
+//test         }
+//test
+//test         return verdict(left === right);
+//test     };
+//test };
 //test const get_type = function (x) {
 //test     return typeof x;
 //test };
@@ -73,7 +94,8 @@ const type_factory = function (ignore) {
 //test             a: jsc.any(),
 //test             f: jsc.wun_of(test_fxs),
 //test             g: jsc.wun_of(test_fxs)
-//test         }]
+//test         }],
+//test         predicate
 //test     },
 //test     apply: {
 //test         T: testT,
@@ -81,7 +103,8 @@ const type_factory = function (ignore) {
 //test             a: jsc.any(),
 //test             u: jsc.wun_of(test_fxs),
 //test             v: jsc.wun_of(test_fxs)
-//test         }]
+//test         }],
+//test         predicate
 //test     },
 //test     applicative: {
 //test         T: testT,
@@ -90,7 +113,8 @@ const type_factory = function (ignore) {
 //test             f: jsc.wun_of(test_fxs),
 //test             u: jsc.wun_of(test_fxs),
 //test             x: jsc.any()
-//test         }]
+//test         }],
+//test         predicate
 //test     }
 //test });
 
