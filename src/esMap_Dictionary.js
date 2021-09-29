@@ -29,10 +29,10 @@ import {
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
 
-const map_set = function (obj) {
-    return function (key) {
-        return function (val) {
-            return obj.set(key, val);
+const map_set = function (key) {
+    return function (val) {
+        return function (obj) {
+            return new_map(obj).set(key, val);
         };
     };
 };
@@ -246,6 +246,8 @@ const type_factory = function (type_of) {
         concat,
         empty,
         append,
+        set: map_set,
+        get: map_get,
 //        indexer,
         create,
         validate: is_object

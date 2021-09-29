@@ -11,15 +11,6 @@
         "/src",
         "/*.min.js"
     ],
-    "devDependencies": {
-        "@jlrwi/jscheck": "*",
-        "@jlrwi/package-processor": "*",
-        "@jlrwi/adt_tests": "*"
-    },
-    "dependencies": {
-        "@jlrwi/esfunctions": "*",
-        "@jlrwi/combinators": "*"
-    },
     "scripts": {
         "pretest": "batch-process --pretest ./modules.json",
         "test": "node ./test/test_modules.js",
@@ -28,5 +19,14 @@
     },
     "author": "Jonathan Reimer",
     "license": "ISC",
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "@jlrwi/combinators": "file:../combinators",
+        "@jlrwi/esfunctions": "file:../esfunctions"
+    },
+    "devDependencies": {
+        "@jlrwi/adt_tests": "file:../adt_tests",
+        "@jlrwi/jscheck": "file:../jscheck",
+        "@jlrwi/package-processor": "file:../pkg_processor"
+    }
 }

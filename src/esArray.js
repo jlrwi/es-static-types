@@ -236,11 +236,6 @@ const set = function (idx) {
     };
 };
 
-const indexer = Object.freeze({
-    get,
-    set
-});
-
 const validate = function (content_type) {
     return function (ary) {
         return (
@@ -274,7 +269,8 @@ const type_factory = function (type_of) {
         append,
         traverse,
         reduce,
-        indexer,
+        get,
+        set,
         validate: Array.isArray,
         create,
         zero
