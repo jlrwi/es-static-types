@@ -23,6 +23,7 @@ import {
 //test     exponent,
     object_has_property,
     object_create_pair,
+    object_append,
     empty_object,
     minimal_object,
     is_object
@@ -52,11 +53,12 @@ const concat = function (objA) {
 // Monoid :: () -> {}
 const empty = minimal_object;
 
-const append = function (obj) {
-    return function (key) {
-        return compose (concat (obj)) (object_create_pair (key));
-    };
-};
+const append = object_append;
+//const append = function (obj) {
+//    return function (key) {
+//        return compose (concat (obj)) (object_create_pair (key));
+//    };
+//};
 
 // Functor :: (a -> b) -> {a} -> {b}
 const map = function (f) {
