@@ -10,11 +10,10 @@ import {
     constant
 } from "@jlrwi/combinators";
 import {
-//test    log,
     add,
     object_concat
 } from "@jlrwi/esfunctions";
-//test import adtTests from "@jlrwi/adt_tests";
+//test import adtTests from "@jlrwi/adt-tests";
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
 
@@ -26,45 +25,47 @@ const type_name = "esNumberAddition";
 const concat = add;
 
 // Monoid :: () -> a
-const empty = constant (0);
+const empty = constant(0);
 
 // Group :: a -> a
-const invert =  function (x) {
+const invert = function (x) {
     return 0 - x;
 };
 
 const type_factory = function (ignore) {
-    return object_concat (esNumber ()) ({
-        spec: "StaticLand",
+    return object_concat(
+        esNumber()
+    )({
+        spec: "curried-static-land",
         version: 1,
         type_name,
         concat,
         empty,
         invert
     });
-}
+};
 
-//test const testT = type_factory ();
-//test const test_roster = adtTests ({
+//test const testT = type_factory();
+//test const test_roster = adtTests({
 //test     semigroup: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.integer(-999, 999),
 //test             b: jsc.integer(-999, 999),
 //test             c: jsc.integer(-999, 999)
-//test         }]
+//test         }
 //test     },
 //test     monoid: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.number(-999, 999)
-//test         }]
+//test         }
 //test     },
 //test     group: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.number(-999, 999)
-//test         }]
+//test         }
 //test     }
 //test });
 

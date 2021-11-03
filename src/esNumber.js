@@ -6,7 +6,6 @@ import {
     identity
 } from "@jlrwi/combinators";
 import {
-//test     log,
 //test     array_map,
 //test     add,
 //test     multiply,
@@ -15,7 +14,7 @@ import {
     lte,
     type_check
 } from "@jlrwi/esfunctions";
-//test import adtTests from "@jlrwi/adt_tests";
+//test import adtTests from "@jlrwi/adt-tests";
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
 
@@ -28,7 +27,7 @@ const num_equals = function (x) {
         return (
             Number.isNaN(x)
             ? Number.isNaN(y)
-            : equals (x) (y)
+            : equals(x)(y)
         );
     };
 };
@@ -37,20 +36,19 @@ const num_equals = function (x) {
 // Order reads "lte y is x"
 const num_lte = function (y) {
     return function (x) {
-        return Number.isNaN(x) || lte (x) (y);
+        return Number.isNaN(x) || lte(x)(y);
     };
 };
 
 // Functor :: (a -> b) -> a -> b
 const map = identity;
 
-const validate = type_check ("number");
-
+const validate = type_check("number");
 const create = identity;
 
-const type_factory = function (ignore) {
+const type_factory = function () {
     return Object.freeze({
-        spec: "StaticLand",
+        spec: "curried-static-land",
         version: 1,
         type_name,
         equals: num_equals,
@@ -61,37 +59,37 @@ const type_factory = function (ignore) {
     });
 };
 
-//test const testT = type_factory ();
-//test const test_fxs = array_map (jsc.literal) ([
-//test     add (10),
-//test     exponent (2),
-//test     multiply (3),
-//test     multiply (-1)
+//test const testT = type_factory();
+//test const test_fxs = array_map(jsc.literal)([
+//test     add(10),
+//test     exponent(2),
+//test     multiply(3),
+//test     multiply(-1)
 //test ]);
-//test const test_roster = adtTests ({
+//test const test_roster = adtTests({
 //test     functor: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.number(),
 //test             f: jsc.wun_of(test_fxs),
 //test             g: jsc.wun_of(test_fxs)
-//test         }]
+//test         }
 //test     },
 //test     setoid: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.wun_of([jsc.number(), 103]),
 //test             b: jsc.wun_of([jsc.number(), 103]),
 //test             c: jsc.wun_of([jsc.number(), 103])
-//test         }]
+//test         }
 //test     },
 //test     ord: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.number(),
 //test             b: jsc.number(),
 //test             c: jsc.number()
-//test         }]
+//test         }
 //test     }
 //test });
 

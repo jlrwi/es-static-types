@@ -9,21 +9,26 @@ Manipulation can be accomplished with lenses.
 */
 
 import {
-//test     log,
+    flip,
+    pipe
+} from "@jlrwi/combinators";
+import {
     object_has_property,
+    object_create_pair,
     is_object,
-    prop,
-    empty_object
+    prop
 } from "@jlrwi/esfunctions";
 //test import esString from "../src/esString.js";
 //test import esBoolean from "../src/esBoolean_Or.js";
 //test import esNumber from "../src/esNumber_Addition.js";
 //test import esArray from "../src/esArray.js";
-//test import adtTests from "@jlrwi/adt_tests";
+//test import adtTests from "@jlrwi/adt-tests";
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
 
 // Static Land implementation of Object as a record
+
+const create = object_create_pair;
 
 // Setoid :: a -> a -> boolean
 const equals = function (spec) {
@@ -32,14 +37,14 @@ const equals = function (spec) {
 
             // Verify xs has all of ys properties
             if (!Object.keys(ys).every(function (key) {
-                return object_has_property (key) (xs);
+                return object_has_property(key)(xs);
             })) {
                 return false;
             }
 
             // Will catch if ys doesn't have all of xs props
             return Object.keys(spec).every(function (key) {
-                return spec[key].equals (xs[key]) (ys[key]);
+                return spec[key].equals(xs[key])(ys[key]);
             });
         };
     };
@@ -50,17 +55,22 @@ const equals = function (spec) {
 const concat = function (spec) {
     return function (x) {
         return function (y) {
-            let res = empty_object ();
-            Object.keys(spec).forEach(function (key) {
-                if (!object_has_property (key) (x)) {
-                    res[key] = y[key];
-                } else if (!object_has_property (key) (y)) {
-                    res[key] = x[key];
-                } else {
-                    res[key] = spec[key].concat (x[key]) (y[key]);
+            const mapper = function ([key, type_module]) {
+//                const [key, type_module] = key_val;
+                if (!object_has_property(key)(x)) {
+                    return [key, y[key]];
                 }
-            });
-            return Object.freeze(res);
+                if (!object_has_property(key)(y)) {
+                    return [key, x[key]];
+                }
+                return [key, type_module.concat(x[key])(y[key])];
+            };
+
+            return Object.freeze(
+                Object.fromEntries(
+                    Object.entries(spec).map(mapper)
+                )
+            );
         };
     };
 };
@@ -69,11 +79,13 @@ const concat = function (spec) {
 // Uses the empty() from each prop in record spec
 const empty = function (spec) {
     return function () {
-        let res = empty_object ();
-        Object.keys(spec).forEach(function (key) {
-            res[key] = spec[key].empty ();
-        });
-        return Object.freeze(res);
+        return Object.freeze(
+            Object.fromEntries(
+                Object.entries(spec).map(function ([key, type_module]) {
+                    return [key, type_module.empty()];
+                })
+            )
+        );
     };
 };
 
@@ -89,13 +101,6 @@ const ap = function (fs) {
             }
         });
         return Object.freeze(res);
-    };
-};
-
-// Functor :: (a -> b) -> a -> b
-const map = function (f) {
-    return function (obj) {
-        return f (obj);
     };
 };
 
@@ -117,61 +122,70 @@ const map_prop = function (target_prop) {
 
 const get = prop;
 const set = function (key) {
-    return function (val) {
-        return function (o) {
-            return Object.freeze({...o, [key]: val});
-        };
+    return pipe(
+        object_create_pair(key)
+    )(
+        flip(concat)
+    );
+};
+
+const validate = function (spec) {
+    return function (x) {
+        return Object.keys(spec).every(function (key) {
+            return spec[key].validate(x[key]);
+        });
     };
 };
 
-const indexer = Object.freeze({
-    get,
-    set
-});
-
+// type_of is a template of the record
+// each property value is a type module
 const type_factory = function (type_of) {
     const base_type = {
-        spec: "StaticLand",
+        spec: "curried-static-land",
         version: 1,
         type_name: "esObject_Record",
-        indexer
+        get,
+        set,
+        create
     };
 
-    if (is_object (type_of)) {
+    if (is_object(type_of)) {
 
         const check_for_prop = function (prop) {
             return Object.values(type_of).every(
-                object_has_property (prop)
+                object_has_property(prop)
             );
         };
 
-        if (check_for_prop ("concat")) {
-            base_type.concat = concat (type_of);
+        if (check_for_prop("concat")) {
+            base_type.concat = concat(type_of);
         }
 
-        if (check_for_prop ("empty")) {
-            base_type.empty = empty (type_of);
+        if (check_for_prop("empty")) {
+            base_type.empty = empty(type_of);
         }
 
-        if (check_for_prop ("equals")) {
-            base_type.equals = equals (type_of);
+        if (check_for_prop("equals")) {
+            base_type.equals = equals(type_of);
         }
+
+        base_type.validate = validate(type_of);
     }
 
     return Object.freeze(base_type);
 };
 
 //test const obj_recT = type_factory({
-//test     s: esString (),
-//test     n: esNumber (),
-//test     b: esBoolean (),
-//test     a: esArray (esNumber ())
+//test     s: esString(),
+//test     n: esNumber(),
+//test     b: esBoolean(),
+//test     a: esArray(esNumber())
 //test });
 
-//test const test_roster = adtTests ({
+//test const test_roster = adtTests({
 //test     semigroup: {
 //test         T: obj_recT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.object(
 //test                 ["s", "n", "b", "a"],
 //test                 [
@@ -199,11 +213,11 @@ const type_factory = function (type_of) {
 //test                     jsc.array(jsc.integer(3, 5), 11)
 //test                 ]
 //test             )
-//test         }]
+//test         }
 //test     },
 //test     monoid: {
 //test         T: obj_recT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.object(
 //test                 ["s", "n", "b", "a"],
 //test                 [
@@ -213,11 +227,11 @@ const type_factory = function (type_of) {
 //test                     jsc.array(jsc.integer(3, 5), 11)
 //test                 ]
 //test             )
-//test         }]
+//test         }
 //test     },
 //test     setoid: {
 //test         T: obj_recT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.wun_of([
 //test                 jsc.object(
 //test                     ["s", "n", "b", "a"],
@@ -278,7 +292,7 @@ const type_factory = function (type_of) {
 //test                     ]
 //test                 )
 //test             ])
-//test         }]
+//test         }
 //test     }
 //test });
 

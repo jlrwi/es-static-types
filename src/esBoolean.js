@@ -11,11 +11,11 @@ import {
 //test     or,
 //test     not,
 //test     array_map,
-//test     log,
+    log,
     equals,
     type_check
 } from "@jlrwi/esfunctions";
-//test import adtTests from "@jlrwi/adt_tests";
+//test import adtTests from "@jlrwi/adt-tests";
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
 
@@ -41,10 +41,10 @@ const map = identity;
 //test     name: "validate",
 //test     predicate: function (verdict) {
 //test         return function (a) {
-//test             return verdict(equals (
-//test                 validate (a)
-//test             ) (
-//test                 or (a === true) (a === false)
+//test             return verdict(equals(
+//test                 validate(a)
+//test             )(
+//test                 or(a === true)(a === false)
 //test             ));
 //test         };
 //test     },
@@ -55,7 +55,7 @@ const map = identity;
 //test     ]
 //test });
 
-const validate = type_check ("boolean");
+const validate = type_check("boolean");
 
 const create = identity;
 
@@ -63,6 +63,7 @@ const create = identity;
 const map_to = function (when_true) {
     return function (when_false) {
         return function (bool) {
+            log("Deprecated: esBoolean.js map_to()");
             return (
                 bool
                 ? when_true
@@ -74,52 +75,52 @@ const map_to = function (when_true) {
 
 const type_factory = function () {
     return Object.freeze({
-        spec: "StaticLand",
+        spec: "curried-static-land",
         version: 1,
         type_name,
         equals,
         lte,
         map,
-        map_to,
+        map_to,     // deprecated
         create,
         validate
     });
 };
 
-//test const testT = type_factory ();
-//test const test_fxs = array_map (jsc.literal) ([
+//test const testT = type_factory();
+//test const test_fxs = array_map(jsc.literal)([
 //test     not,
-//test     constant (true),
-//test     constant (false),
-//test     and (true),
-//test     and (false),
-//test     or (true),
-//test     or (false)
+//test     constant(true),
+//test     constant(false),
+//test     and(true),
+//test     and(false),
+//test     or(true),
+//test     or(false)
 //test ]);
-//test const test_roster = adtTests ({
+//test const test_roster = adtTests({
 //test     functor: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.boolean(),
 //test             f: jsc.wun_of(test_fxs),
 //test             g: jsc.wun_of(test_fxs)
-//test         }]
+//test         }
 //test     },
 //test     setoid: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.boolean(),
 //test             b: jsc.boolean(),
 //test             c: jsc.boolean()
-//test         }]
+//test         }
 //test     },
 //test     ord: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.boolean(),
 //test             b: jsc.boolean(),
 //test             c: jsc.boolean()
-//test         }]
+//test         }
 //test     }
 //test });
 

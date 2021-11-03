@@ -11,11 +11,10 @@ import {
     constant
 } from "@jlrwi/combinators";
 import {
-//test    log,
     and,
     object_concat
 } from "@jlrwi/esfunctions";
-//test import adtTests from "@jlrwi/adt_tests";
+//test import adtTests from "@jlrwi/adt-tests";
 //test import jsCheck from "@jlrwi/jscheck";
 //test let jsc = jsCheck();
 
@@ -28,12 +27,12 @@ const type_name = "esBooleanAnd";
 const concat = and;
 
 // Monoid :: () -> a
-const empty = constant (true);
+const empty = constant(true);
 
 const type_factory = function (ignore) {
     return Object.freeze(
-        object_concat (esBoolean ()) ({
-            spec: "StaticLand",
+        object_concat(esBoolean())({
+            spec: "curried-static-land",
             version: 1,
             type_name,
             concat,
@@ -42,21 +41,21 @@ const type_factory = function (ignore) {
     );
 };
 
-//test const testT = type_factory ();
-//test const test_roster = adtTests ({
+//test const testT = type_factory();
+//test const test_roster = adtTests({
 //test     semigroup: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.boolean(),
 //test             b: jsc.boolean(),
 //test             c: jsc.boolean()
-//test         }]
+//test         }
 //test     },
 //test     monoid: {
 //test         T: testT,
-//test         signature: [{
+//test         signature: {
 //test             a: jsc.boolean()
-//test         }]
+//test         }
 //test     }
 //test });
 
