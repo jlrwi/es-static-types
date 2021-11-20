@@ -428,7 +428,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         jsc.integer(3, 5),
 //test                         jsc.character("a", "z")
@@ -445,7 +445,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         jsc.integer(3, 5),
 //test                         jsc.character("a", "z")
@@ -455,7 +455,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             b: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         jsc.integer(3, 5),
 //test                         jsc.character("a", "z")
@@ -465,7 +465,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             c: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         jsc.integer(3, 5),
 //test                         jsc.character("a", "z")
@@ -481,7 +481,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         jsc.integer(3, 5),
 //test                         jsc.character("a", "z")
@@ -497,7 +497,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 5),
+//test                     jsc.integer(0, 5),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "f")
@@ -507,7 +507,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             u: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 5),
+//test                     jsc.integer(0, 5),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "f")
@@ -517,7 +517,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             v: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 5),
+//test                     jsc.integer(0, 5),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "f")
@@ -534,7 +534,7 @@ const type_factory = function (type_of) {
 //test             g: jsc.wun_of(extend_fxs),
 //test             w: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -551,7 +551,7 @@ const type_factory = function (type_of) {
 //test             x: 0,
 //test             u: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -580,7 +580,7 @@ const type_factory = function (type_of) {
 //test             g: jsc.wun_of(num_num_fxs),
 //test             u: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(1, jsc.character("a", "z"))
 //test                 ),
 //test                 function () {
@@ -606,7 +606,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -616,7 +616,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             b: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -633,7 +633,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -643,7 +643,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             b: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -653,7 +653,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             c: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -668,7 +668,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: jsc.object(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.string(
 //test                         1,
 //test                         jsc.character("a", "z")
@@ -684,7 +684,7 @@ const type_factory = function (type_of) {
 //test             a: jsc.wun_of([
 //test                 jsc.object(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.string(1, jsc.character("a", "z"))
 //test                     ),
 //test                     jsc.integer(-999, 999)
@@ -697,7 +697,7 @@ const type_factory = function (type_of) {
 //test             b: jsc.wun_of([
 //test                 jsc.object(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.string(1, jsc.character("a", "z"))
 //test                     ),
 //test                     jsc.integer(-999, 999)
@@ -710,7 +710,7 @@ const type_factory = function (type_of) {
 //test             c: jsc.wun_of([
 //test                 jsc.object(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.string(1, jsc.character("a", "z"))
 //test                     ),
 //test                     jsc.integer(-999, 999)
@@ -728,7 +728,7 @@ const type_factory = function (type_of) {
 //test             a: jsc.wun_of([
 //test                 jsc.object(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.string(1, jsc.character("a", "z"))
 //test                     ),
 //test                     jsc.integer(-999, 999)
@@ -744,7 +744,7 @@ const type_factory = function (type_of) {
 //test             b: jsc.wun_of([
 //test                 jsc.object(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.string(1, jsc.character("a", "z"))
 //test                     ),
 //test                     jsc.integer(-999, 999)
@@ -760,7 +760,7 @@ const type_factory = function (type_of) {
 //test             c: jsc.wun_of([
 //test                 jsc.object(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.string(1, jsc.character("a", "z"))
 //test                     ),
 //test                     jsc.integer(-999, 999)

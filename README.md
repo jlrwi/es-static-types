@@ -31,7 +31,7 @@ const type_module = factory();
     
 With typed contents:
 ```
-    const type_module = factory(content_type_module);
+const type_module = factory(content_type_module);
 ```
 
 ## Generic types

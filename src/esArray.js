@@ -351,7 +351,7 @@ const type_factory = function (type_of) {
 //test     functor: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
 //test             f: jsc.wun_of(test_fxs),
 //test             g: jsc.wun_of(test_fxs)
 //test         }
@@ -359,29 +359,29 @@ const type_factory = function (type_of) {
 //test     alt: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
-//test             b: jsc.array(jsc.integer(25), jsc.string()),
-//test             c: jsc.array(jsc.integer(25), jsc.string()),
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
+//test             b: jsc.array(jsc.integer(0, 25), jsc.string()),
+//test             c: jsc.array(jsc.integer(0, 25), jsc.string()),
 //test             f: jsc.wun_of(test_fxs)
 //test         }
 //test     },
 //test     plus: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
 //test             f: jsc.wun_of(test_fxs)
 //test         }
 //test     },
 //test     apply: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
 //test             u: jsc.array(
-//test                 jsc.integer(3),
+//test                 jsc.integer(0, 3),
 //test                 jsc.wun_of(test_fxs)
 //test             ),
 //test             v: jsc.array(
-//test                 jsc.integer(3),
+//test                 jsc.integer(0, 3),
 //test                 jsc.wun_of(test_fxs)
 //test             )
 //test         }
@@ -389,9 +389,9 @@ const type_factory = function (type_of) {
 //test     applicative: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
 //test             f: jsc.wun_of(test_fxs),
-//test             u: jsc.array(jsc.integer(3), jsc.wun_of(test_fxs)),
+//test             u: jsc.array(jsc.integer(0, 3), jsc.wun_of(test_fxs)),
 //test             x: jsc.string()
 //test         }
 //test     },
@@ -400,29 +400,29 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             f: function () {
 //test                 return chainer(
-//test                     jsc.array(jsc.integer(3), jsc.wun_of(test_fxs))
+//test                     jsc.array(jsc.integer(0, 3), jsc.wun_of(test_fxs))
 //test                 );
 //test             },
 //test             g: function () {
 //test                 return chainer(
-//test                     jsc.array(jsc.integer(3), jsc.wun_of(test_fxs))
+//test                     jsc.array(jsc.integer(0, 3), jsc.wun_of(test_fxs))
 //test                 );
 //test             },
-//test             u: jsc.array(jsc.integer(15), jsc.string())
+//test             u: jsc.array(jsc.integer(0, 15), jsc.string())
 //test         }
 //test     },
 //test     alternative: {
 //test         T: array_of_stringT,
 //test         signature: {
 //test             a: jsc.array(
-//test                 jsc.integer(3),
+//test                 jsc.integer(0, 3),
 //test                 jsc.wun_of(test_fxs)
 //test             ),
 //test             b: jsc.array(
-//test                 jsc.integer(3),
+//test                 jsc.integer(0, 3),
 //test                 jsc.wun_of(test_fxs)
 //test             ),
-//test             c: jsc.array(jsc.integer(15), jsc.string())
+//test             c: jsc.array(jsc.integer(0, 15), jsc.string())
 //test         }
 //test     },
 //test     monad: {
@@ -431,10 +431,10 @@ const type_factory = function (type_of) {
 //test             a: jsc.string(),
 //test             f: function () {
 //test                 return chainer(
-//test                     jsc.array(jsc.integer(3), jsc.wun_of(test_fxs))
+//test                     jsc.array(jsc.integer(0, 3), jsc.wun_of(test_fxs))
 //test                 );
 //test             },
-//test             u: jsc.array(jsc.integer(15), jsc.string())
+//test             u: jsc.array(jsc.integer(0, 15), jsc.string())
 //test         }
 //test     },
 //test     extend: {
@@ -442,7 +442,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             f: jsc.wun_of(extend_fxs),
 //test             g: jsc.wun_of(extend_fxs),
-//test             w: jsc.array(jsc.integer(15), jsc.string())
+//test             w: jsc.array(jsc.integer(0, 15), jsc.string())
 //test         }
 //test     },
 //test     foldable: {
@@ -450,7 +450,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             f: jsc.wun_of(array_map(mapper_to_reducer)(test_fxs)),
 //test             x: "",
-//test             u: jsc.array(jsc.integer(10), jsc.string())
+//test             u: jsc.array(jsc.integer(0, 10), jsc.string())
 //test         },
 //test         compare_with: stringT.equals
 //test     },
@@ -471,7 +471,7 @@ const type_factory = function (type_of) {
 //test             }),
 //test             g: jsc.wun_of(test_fxs),
 //test             u: jsc.array(
-//test                 jsc.integer(10),
+//test                 jsc.integer(0, 10),
 //test                 function () {
 //test                     return pair_of_bool_strT.create(
 //test                         jsc.boolean()()
@@ -491,8 +491,8 @@ const type_factory = function (type_of) {
 //test     filterable: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(15), jsc.string()),
-//test             b: jsc.array(jsc.integer(15), jsc.string()),
+//test             a: jsc.array(jsc.integer(0, 15), jsc.string()),
+//test             b: jsc.array(jsc.integer(0, 15), jsc.string()),
 //test             f: jsc.wun_of(filters),
 //test             g: jsc.wun_of(filters)
 //test         }
@@ -500,30 +500,30 @@ const type_factory = function (type_of) {
 //test     semigroup: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
-//test             b: jsc.array(jsc.integer(25), jsc.string()),
-//test             c: jsc.array(jsc.integer(25), jsc.string())
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
+//test             b: jsc.array(jsc.integer(0, 25), jsc.string()),
+//test             c: jsc.array(jsc.integer(0, 25), jsc.string())
 //test         }
 //test     },
 //test     monoid: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string())
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string())
 //test         }
 //test     },
 //test     setoid: {
 //test         T: array_of_stringT,
 //test         signature: {
 //test             a: jsc.wun_of([
-//test                 jsc.array(jsc.integer(15), jsc.string()),
+//test                 jsc.array(jsc.integer(0, 15), jsc.string()),
 //test                 jsc.array(4, "x")
 //test             ]),
 //test             b: jsc.wun_of([
-//test                 jsc.array(jsc.integer(15), jsc.string()),
+//test                 jsc.array(jsc.integer(0, 15), jsc.string()),
 //test                 jsc.array(4, "x")
 //test             ]),
 //test             c: jsc.wun_of([
-//test                 jsc.array(jsc.integer(15), jsc.string()),
+//test                 jsc.array(jsc.integer(0, 15), jsc.string()),
 //test                 jsc.array(4, "x")
 //test             ])
 //test         }
@@ -531,9 +531,9 @@ const type_factory = function (type_of) {
 //test     ord: {
 //test         T: array_of_stringT,
 //test         signature: {
-//test             a: jsc.array(jsc.integer(25), jsc.string()),
-//test             b: jsc.array(jsc.integer(25), jsc.string()),
-//test             c: jsc.array(jsc.integer(25), jsc.string())
+//test             a: jsc.array(jsc.integer(0, 25), jsc.string()),
+//test             b: jsc.array(jsc.integer(0, 25), jsc.string()),
+//test             c: jsc.array(jsc.integer(0, 25), jsc.string())
 //test         }
 //test     }
 //test });

@@ -289,7 +289,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -308,7 +308,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -320,7 +320,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             b: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -332,7 +332,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             c: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -350,7 +350,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -368,7 +368,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -380,7 +380,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             u: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 5),
+//test                     jsc.integer(0, 5),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             1,
@@ -392,7 +392,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             v: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 5),
+//test                     jsc.integer(0, 5),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             1,
@@ -411,7 +411,7 @@ const type_factory = function (type_of) {
 //test             x: 0,
 //test             u: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(
 //test                             jsc.integer(3, 5),
@@ -442,7 +442,7 @@ const type_factory = function (type_of) {
 //test             g: jsc.wun_of(num_num_fxs),
 //test             u: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         function () {
@@ -470,7 +470,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -488,7 +488,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -497,7 +497,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             b: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -513,7 +513,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -522,7 +522,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             b: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -531,7 +531,7 @@ const type_factory = function (type_of) {
 //test             ),
 //test             c: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -545,7 +545,7 @@ const type_factory = function (type_of) {
 //test         signature: {
 //test             a: entries_to_map(
 //test                 jsc.array(
-//test                     jsc.integer(3, 10),
+//test                     jsc.integer(0, 10),
 //test                     jsc.array([
 //test                         jsc.string(1, jsc.character("a", "z")),
 //test                         jsc.integer(-99, 99)
@@ -560,7 +560,7 @@ const type_factory = function (type_of) {
 //test             a: jsc.wun_of([
 //test                 entries_to_map(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.array([
 //test                             jsc.string(1, jsc.character("a", "z")),
 //test                             jsc.integer(-999, 999)
@@ -572,7 +572,7 @@ const type_factory = function (type_of) {
 //test             b: jsc.wun_of([
 //test                 entries_to_map(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.array([
 //test                             jsc.string(1, jsc.character("a", "z")),
 //test                             jsc.integer(-999, 999)
@@ -584,7 +584,7 @@ const type_factory = function (type_of) {
 //test             c: jsc.wun_of([
 //test                 entries_to_map(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.array([
 //test                             jsc.string(1, jsc.character("a", "z")),
 //test                             jsc.integer(-999, 999)
@@ -602,7 +602,7 @@ const type_factory = function (type_of) {
 //test             a: jsc.wun_of([
 //test                 entries_to_map(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.array([
 //test                             jsc.string(1, jsc.character("a", "z")),
 //test                             jsc.integer(-999, 999)
@@ -622,7 +622,7 @@ const type_factory = function (type_of) {
 //test             b: jsc.wun_of([
 //test                 entries_to_map(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.array([
 //test                             jsc.string(1, jsc.character("a", "z")),
 //test                             jsc.integer(-999, 999)
@@ -642,7 +642,7 @@ const type_factory = function (type_of) {
 //test             c: jsc.wun_of([
 //test                 entries_to_map(
 //test                     jsc.array(
-//test                         jsc.integer(3, 10),
+//test                         jsc.integer(0, 10),
 //test                         jsc.array([
 //test                             jsc.string(1, jsc.character("a", "z")),
 //test                             jsc.integer(-999, 999)
