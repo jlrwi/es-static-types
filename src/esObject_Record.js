@@ -9,13 +9,20 @@ Manipulation can be accomplished with lenses.
 */
 
 import {
+//test     compose,
     flip,
-    pipe
+    pipe,
+    pipeN
 } from "@jlrwi/combinators";
 import {
+//test     array_map,
+//test     add,
+//test     multiply,
+//test     exponent,
     object_has_property,
     object_create_pair,
     is_object,
+    method,
     prop
 } from "@jlrwi/esfunctions";
 //test import esString from "../src/esString.js";
@@ -89,21 +96,31 @@ const empty = function (spec) {
     };
 };
 
-/*
-// Apply :: {(a -> b)} -> {a} -> {b}
-// This could be a useful method, but it's not lawful
-const ap = function (fs) {
-    return function (xs) {
-        let res = empty_object ();
-        Object.keys(fs).forEach(function (key) {
-            if (object_has_property (key) (xs)) {
-                res[key] = fs[key] (xs[key]);
-            }
-        });
-        return Object.freeze(res);
+
+// {(a -> b)} -> {a} -> {b}
+// This approximates Apply algebra but is not lawful
+// There is an implicit identity function in fs for all properties
+const record_map = function (fs) {
+    const entries_mapper = function ([key, val]) {
+        return [
+            key,
+            (
+                (object_has_property(key)(fs))
+                ? fs[key](val)
+                : val
+            )
+        ];
     };
+
+    return pipeN(
+        Object.entries,
+        method("map")(entries_mapper),
+        Object.fromEntries,
+        Object.freeze
+    );
 };
 
+/*
 // Run f on a specified property of a record
 // This can also be accomplished with lenses
 const map_prop = function (target_prop) {
@@ -146,15 +163,13 @@ const type_factory = function (type_of) {
         type_name: "esObject_Record",
         get,
         set,
-        create
+        create,
+        record_map
     };
 
     if (is_object(type_of)) {
-
         const check_for_prop = function (prop) {
-            return Object.values(type_of).every(
-                object_has_property(prop)
-            );
+            return Object.values(type_of).every(object_has_property(prop));
         };
 
         if (check_for_prop("concat")) {
@@ -181,7 +196,20 @@ const type_factory = function (type_of) {
 //test     b: esBoolean(),
 //test     a: esArray(esNumber())
 //test });
-
+//test const record_of_numT = type_factory({
+//test     a: esNumber(),
+//test     b: esNumber(),
+//test     c: esNumber(),
+//test     d: esNumber()
+//test });
+//test const num_num_fxs = array_map(jsc.literal)([
+//test     add(10),
+//test     add(-31),
+//test     exponent(2),
+//test     multiply(3),
+//test     multiply(-7),
+//test     multiply(-1)
+//test ]);
 //test const test_roster = adtTests({
 //test     semigroup: {
 //test         T: obj_recT,
@@ -293,6 +321,55 @@ const type_factory = function (type_of) {
 //test                 )
 //test             ])
 //test         }
+//test     }
+//test });
+//test jsc.claim({
+//test     name: "record_map associativity",
+//test     predicate: function (verdict) {
+//test         return function ({a, f, g}) {
+//test             const composed = pipeN(
+//test                 Object.entries,
+//test                 method("map")(function ([key, f_function]) {
+//test                     return [key, compose(f_function)(g[key])];
+//test                 }),
+//test                 Object.fromEntries
+//test             )(
+//test                 f
+//test             );
+//test
+//test             const left = record_map(composed)(a);
+//test             const right = record_map(f)(record_map(g)(a));
+//test             return verdict(record_of_numT.equals(left)(right));
+//test         };
+//test     },
+//test     signature: {
+//test         a: jsc.object(
+//test             ["a", "b", "c", "d"],
+//test             [
+//test                 jsc.integer(),
+//test                 jsc.integer(),
+//test                 jsc.integer(),
+//test                 jsc.integer()
+//test             ]
+//test         ),
+//test         f: jsc.object(
+//test             ["a", "b", "c", "d"],
+//test             [
+//test                 jsc.wun_of(num_num_fxs),
+//test                 jsc.wun_of(num_num_fxs),
+//test                 jsc.wun_of(num_num_fxs),
+//test                 jsc.wun_of(num_num_fxs)
+//test             ]
+//test         ),
+//test         g: jsc.object(
+//test             ["a", "b", "c", "d"],
+//test             [
+//test                 jsc.wun_of(num_num_fxs),
+//test                 jsc.wun_of(num_num_fxs),
+//test                 jsc.wun_of(num_num_fxs),
+//test                 jsc.wun_of(num_num_fxs)
+//test             ]
+//test         )
 //test     }
 //test });
 
