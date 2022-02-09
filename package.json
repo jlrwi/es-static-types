@@ -1,6 +1,6 @@
 {
     "name": "@jlrwi/es-static-types",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "Type factories for ECMAScript types in curried-static-land",
     "main": "index.js",
     "homepage": "https://github.com/jlrwi/es-static-types",

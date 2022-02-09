@@ -15,7 +15,7 @@ import {
 //test     equals,
     prop,
 //test     lt,
-//test     array_map,
+//test     string_concat,
 //test     add,
 //test     multiply,
 //test     remainder,
@@ -26,6 +26,7 @@ import {
     object_append,
     empty_object,
     minimal_object,
+    array_map,
     is_object
 } from "@jlrwi/esfunctions";
 //test import esNumber_Addition from "../src/esNumber_Addition.js";
@@ -263,23 +264,23 @@ const lte = function (content_type) {
 }; */
 
 //unused?
-/*
+
+// Bifunctor :: f -> g -> a -> a
+// (a -> b) -> (c -> d) -> {a: c} -> {b: d}
 const bimap = function (f) {
     return function (g) {
-        const reducer = function (result, keyval) {
-            const [key, val] = keyval;
-            result[f(key)] = g(val);
-            return result;
+        const mapper = function ([key, val]) {
+            return [f(key), g(val)];
         };
 
         return pipeN(
             Object.entries,
-            method("reduce")(reducer, empty_object()),
+            array_map(mapper),
+            Object.fromEntries,
             Object.freeze
         );
     };
 };
-*/
 
 // Comonad :: {a} -> a
 // would need to return a pair?
@@ -318,7 +319,7 @@ const type_factory = function (type_of) {
         extend,
         reduce,
         traverse,
-//        bimap,
+        bimap,
         filter,
         concat,
         empty,
@@ -361,6 +362,11 @@ const type_factory = function (type_of) {
 //test     exponent(2),
 //test     multiply(3),
 //test     multiply(-1)
+//test ]);
+//test const str_str_fxs = array_map(jsc.literal)([
+//test     string_concat("key"),
+//test     method("repeat")(3),
+//test     method("toUpperCase")()
 //test ]);
 
 //test const mapper_to_reducer = function (mapper) {
@@ -524,6 +530,25 @@ const type_factory = function (type_of) {
 //test                     )
 //test                 ),
 //test                 jsc.wun_of(num_num_fxs)
+//test             )
+//test         }
+//test     },
+//test     bifunctor: {
+//test         T: obj_of_numT,
+//test         signature: {
+//test             f: jsc.wun_of(str_str_fxs),
+//test             g: jsc.wun_of(str_str_fxs),
+//test             h: jsc.wun_of(num_num_fxs),
+//test             i: jsc.wun_of(num_num_fxs),
+//test             a: jsc.object(
+//test                 jsc.array(
+//test                     jsc.integer(0, 10),
+//test                     jsc.string(
+//test                         jsc.integer(3, 5),
+//test                         jsc.character("a", "z")
+//test                     )
+//test                 ),
+//test                 jsc.integer(-99, 99)
 //test             )
 //test         }
 //test     },

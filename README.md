@@ -14,7 +14,7 @@ map_dictionary_type | Plus, Apply, Traversable, Filterable, Monoid, *Setoid*
 number_type | Functor, Ord
 number_addition_type | Functor, Group, Ord
 number_multiplication_type | Functor, Group, Ord
-object_dictionary_type | Plus, Apply, Extend, Traversable, Filterable, Monoid, *Ord*
+object_dictionary_type | Plus, Apply, Bifunctor, Extend, Traversable, Filterable, Monoid, *Ord*
 object_record_type | *Monoid*, *Setoid*
 primitive_type | Functor, Applicative, Setoid
 string_type | Functor, Monoid, Ord
