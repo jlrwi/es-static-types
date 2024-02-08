@@ -1,5 +1,5 @@
 /*jslint
-    fudge
+    unordered
 */
 
 import boolean_type from "./esBoolean.min.js";

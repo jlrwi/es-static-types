@@ -1,5 +1,5 @@
 /*jslint
-    fudge
+    unordered
 */
 
 import {
@@ -85,55 +85,85 @@ const zero = empty;
 // Apply :: {(a -> b)} -> {a} -> {b}
 const ap = function (fs) {
     return function (xs) {
-        let res = empty_object();
-        Object.keys(fs).forEach(function (key) {
+//        let res = empty_object();
+//        Object.keys(fs).forEach(function (key) {
+//            if (object_has_property(key)(xs)) {
+//                res[key] = fs[key](xs[key]);
+//            }
+//        });
+//        return Object.freeze(res);
+        const reducer = function (res, key) {
             if (object_has_property(key)(xs)) {
                 res[key] = fs[key](xs[key]);
             }
-        });
-        return Object.freeze(res);
+            return res;
+        };
+
+        return Object.freeze(
+            Object.keys(fs).reduce(reducer, {})
+        );
     };
 };
 
 const object_subset = function (keys) {
     return function (obj) {
-        let res = empty_object();
-        keys.forEach(function (key) {
+//        let res = empty_object();
+//        keys.forEach(function (key) {
+//            res[key] = obj[key];
+//        });
+//        return Object.freeze(res);
+        const reducer = function (res, key) {
             res[key] = obj[key];
-        });
-        return Object.freeze(res);
+            return res;
+        };
+
+        return Object.freeze(keys.reduce(reducer, {}));
     };
 };
 
 // Extend :: ({a} -> b) -> {a} -> {b}
 const extend = function (f) {
-    return function (xs) {
-        const key_lists = Object.keys(xs).sort().map(
+    return function (obj) {
+        const key_lists = Object.keys(obj).sort().map(
             function (ignore, idx, keys) {
                 return keys.slice(idx);
             }
         );
-        let obj = empty_object();
-        key_lists.forEach(function (keys) {
-            obj[keys[0]] = f(object_subset(keys)(xs));
-        });
-        return Object.freeze(obj);
+//        let obj = empty_object();
+//        key_lists.forEach(function (keys) {
+//            obj[keys[0]] = f(object_subset(keys)(xs));
+//        });
+//        return Object.freeze(obj);
+
+        const reducer = function (res, keys) {
+            res[keys[0]] = f(object_subset(keys)(obj));
+            return res;
+        };
+
+        return Object.freeze(key_lists.reduce(reducer, {}));
     };
 };
 
 // Foldable :: ((c, {a: b}) -> c) -> c -> {a: b} -> c
 const reduce = function (f) {
-    return function (initial) {
-        return function (xs) {
-            let acc = initial;
-            Object.entries(xs).forEach(function ([key, val]) {
-                acc = f(
-                    acc
-                )(
-                    object_create_pair(key)(val)
-                );
-            });
-            return Object.freeze(acc);
+    return function (initial = {}) {
+        return function (obj) {
+//            let acc = initial;
+//            Object.entries(xs).forEach(function ([key, val]) {
+//                acc = f(
+//                    acc
+//                )(
+//                    object_create_pair(key)(val)
+//                );
+//            });
+//            return Object.freeze(acc);
+            const reducer = function (res, key_val) {
+                return f(res)(Object.fromEntries([key_val]));
+            };
+
+            return Object.freeze(
+                Object.entries(obj).reduce(reducer, initial)
+            );
         };
     };
 };

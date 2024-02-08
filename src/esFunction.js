@@ -1,5 +1,5 @@
 /*jslint
-    fudge
+    unordered
 */
 
 import {
@@ -46,7 +46,6 @@ const id = identity;
 
 // Functor :: (b -> c) -> (a -> b) -> (a -> c)
 const map = compose;
-
 
 // Chain :: (b -> a -> c) -> (a -> b) -> (a -> c)
 // Synonymous with Warbler (Once Removed)? abc.abcc

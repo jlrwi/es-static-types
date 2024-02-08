@@ -1,5 +1,5 @@
 /*jslint
-    fudge
+    unordered
 */
 
 // Generic type for primitive values:

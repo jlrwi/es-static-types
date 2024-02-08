@@ -1,5 +1,5 @@
 /*jslint
-    fudge
+    unordered
 */
 
 // Static Land implementation of Undefined
